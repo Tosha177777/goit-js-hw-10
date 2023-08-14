@@ -32,7 +32,7 @@ function onSelect(e) {
   </div>
   <div class="cat-details">
     <h2 id="breed-name">${resp.name}</h2>
-    <p id="breed-description">${resp.description.value}</p>
+    <p id="breed-description">${resp.description}</p>
     <p id="breed-temperament">${resp.temperament}</p>
   </div>`;
 
@@ -42,20 +42,6 @@ function onSelect(e) {
 
 function addMarkup(markup, el) {
   el.innerHTML = markup;
-}
-
-function fetchCatByBreed(breedId) {
-  return fetch(`${SEARCH_BREED}${breedId}`)
-    .then(res => {
-      if (!res.ok) {
-        throw new Error(res.statusText);
-      }
-      console.log(res.json());
-      return res.json();
-    })
-    .catch(err => {
-      Notiflix.Notify.failure(err.message);
-    });
 }
 
 // {
