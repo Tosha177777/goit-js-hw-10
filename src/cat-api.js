@@ -1,7 +1,8 @@
 import axios from 'axios';
 
 import Notiflix from 'notiflix';
-
+const error = document.querySelector('.error');
+error.classList.add('hidden');
 const API_KEY =
   'live_4Tn9geSwD6nYnjlHS5lSpHs1EfvddAhOvLTsr3QhUqbTm79Q07AiBwjtDRRcIikD';
 
@@ -24,7 +25,8 @@ export function fetchCatByBreed(breedId) {
   return fetch(`${SEARCH_BREED}${breedId}&api_key=${API_KEY}`)
     .then(res => {
       if (!res.ok) {
-        throw new Error(res.statusText);
+        error.classList.remove('hidden');
+        throw new Error(res.status);
       }
       return res.json();
     })
