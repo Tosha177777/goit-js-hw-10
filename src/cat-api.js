@@ -21,12 +21,11 @@ export function fetchBreeds() {
 }
 
 export function fetchCatByBreed(breedId) {
-  return fetch(`${SEARCH_BREED}${breedId}`)
+  return fetch(`${SEARCH_BREED}${breedId}&api_key=${API_KEY}`)
     .then(res => {
       if (!res.ok) {
         throw new Error(res.statusText);
       }
-      console.log(res.json());
       return res.json();
     })
     .catch(err => {

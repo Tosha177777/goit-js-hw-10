@@ -27,14 +27,20 @@ function onSelect(e) {
   const breedId = e.target.value;
   console.log(breedId);
   fetchCatByBreed(breedId).then(resp => {
-    const markup = `<div class="cat-image">
-    <img src="${resp.url}" alt="${breedId}" id="cat-image" />
+    console.log(resp);
+    const markup = resp
+      .map(breeds => {
+        const breed = breeds.breeds[0];
+        return `<div class="cat-image">
+    <img src="${breeds.url}" alt="${breedId}" id="cat-image" width=360/>
   </div>
   <div class="cat-details">
-    <h2 id="breed-name">${resp.name}</h2>
-    <p id="breed-description">${resp.description}</p>
-    <p id="breed-temperament">${resp.temperament}</p>
+    <h2 id="breed-name">${breed.name}</h2>
+    <p id="breed-description">${breed.description}</p>
+    <p id="breed-temperament">${breed.temperament}</p>
   </div>`;
+      })
+      .join('');
 
     addMarkup(markup, catInfoContainer);
   });
