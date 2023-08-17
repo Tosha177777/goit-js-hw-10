@@ -10,6 +10,7 @@ const loader = document.querySelector('.loader');
 const errorEl = document.querySelector('.error');
 errorEl.classList.add('hidden');
 selectBreed.style.width = '360px';
+
 loader.classList.add('loading');
 selectBreed.classList.add('hidden');
 catInfoContainer.classList.add('hidden');
