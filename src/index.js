@@ -25,7 +25,6 @@ fetchBreeds().then(breeds => {
     select: selectBreed,
     data: options,
   });
-  loader.classList.remove('loading');
   selectBreed.classList.remove('hidden');
 });
 
