@@ -9,7 +9,7 @@ const catInfoContainer = document.querySelector('.cat-info');
 const loader = document.querySelector('.loader');
 const errorEl = document.querySelector('.error');
 errorEl.classList.add('hidden');
-
+selectBreed.style.width = '360px';
 loader.classList.add('loading');
 selectBreed.classList.add('hidden');
 catInfoContainer.classList.add('hidden');
@@ -43,8 +43,10 @@ function onSelect(e) {
     })
     .catch(error => {
       errorEl.classList.remove('hidden');
-      loader.classList.remove('loading');
       Notiflix.Notify.failure(error.message);
+    })
+    .finally(() => {
+      loader.classList.remove('loading');
     });
 }
 
